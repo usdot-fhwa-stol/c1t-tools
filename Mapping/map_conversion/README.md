@@ -1,5 +1,5 @@
 # SLAM map to PCD conversion
-This repository contains multiple ROS2 packages and some Python scripts to facilitate converting from a SLAM map to a PCD file for use with the CARMA 1tenth scaled-down cooperative driving automation program.
+This contains a ROS2 package to facilitate converting from a SLAM map to a PCD file for use with the CARMA 1tenth scaled-down cooperative driving automation program. Other packages and python scripts are needed, and they are mentioned in the "Dependent Repos" section, below.
 
 The ROS2-based Autoware.auto does not appear to include the **NDT Mapping** from Autoware.ai.
 Additionally, stakeholders may desire to generate their HD maps using a non-C1T vehicle (or a C1T vehicle running some remote-controlled driving platform) and need a solution to generate the PCD maps that are required for **NDT Matching** and localization in the C1T HD Map and scaled-down world.
@@ -64,7 +64,7 @@ The overall process for PCD map generation is as follows:
         3. Deserializes the array of points into a PointCloud2 message using the ros2_numpy package
         4. Publishes the PointCloud2 message of the map of the test environment to a topic and record rosbag2 of the PointCloud2 topic
     2. record the PointCloud2 message with `ros2 bag record <topic_name>` where `<topic_name>` is the name of the topic the PointCloud2 message is being published to
-2. Convert the rosbag2 to a rosbag using `rosbags` python package and by running:
+2. Convert the ros2 bag to a rosbag using `rosbags` python package and by running:
     ```
     rosbags-convert <rosbag2_path>
     ```
